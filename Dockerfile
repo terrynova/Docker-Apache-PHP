@@ -50,7 +50,6 @@ RUN \
   ln -s /var/log/apache2 /logs
 
 ADD proxy-config.conf /etc/apache2/000-default.conf
-ADD apache2.conf /etc/apache2/apache2.conf
 ADD ports.conf /etc/apache2/ports.conf
 
 # Manually set the apache environment variables in order to get apache to work immediately.
@@ -70,6 +69,7 @@ VOLUME ["/config", "/web", "/logs"]
 
 # Add our crontab file
 ADD crons.conf /root/crons.conf
+ADD /config/apache2.conf /etc/apache2/apache2.conf
 
 # Add firstrun.sh to execute during container startup
 ADD firstrun.sh /etc/my_init.d/firstrun.sh
